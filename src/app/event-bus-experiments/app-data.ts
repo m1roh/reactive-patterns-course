@@ -1,8 +1,7 @@
-
 import * as _ from 'lodash';
-import {Lesson} from "../shared/model/lesson";
+import {Lesson} from '../shared/model/lesson';
 
-import {Subject, Observable, Observer,BehaviorSubject } from 'rxjs';
+import {Subject, Observable, Observer, BehaviorSubject } from 'rxjs';
 
 
 
@@ -25,7 +24,7 @@ class DataStore {
         this.lessonsListSubject.next(lessons);
     }
 
-    deleteLesson(deleted:Lesson) {
+    deleteLesson(deleted: Lesson) {
 
         const lessons = this.cloneLessons();
 
@@ -34,11 +33,11 @@ class DataStore {
         this.lessonsListSubject.next(lessons);
     }
 
-    toggleLessonViewed(toggled:Lesson) {
+    toggleLessonViewed(toggled: Lesson) {
 
         const lessons = this.cloneLessons();
 
-        const lesson = _.find(lessons, lesson => lesson.id === toggled.id);
+        const lesson = _.find(lessons, less => less.id === toggled.id);
 
         lesson.completed = ! lesson.completed;
         this.lessonsListSubject.next(lessons);

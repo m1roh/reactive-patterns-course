@@ -1,10 +1,10 @@
 
 import {Routes} from '@angular/router';
-import {HomeComponent} from "./home/home.component";
-import {CourseDetailComponent} from "./course-detail/course-detail.component";
+import {HomeComponent} from './home/home.component';
+import {CourseDetailComponent} from './course-detail/course-detail.component';
 
 
-export const routerConfig : Routes = [
+export const routerConfig: Routes = [
     {
         path: 'home',
         component: HomeComponent

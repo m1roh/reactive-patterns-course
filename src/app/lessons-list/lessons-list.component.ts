@@ -20,6 +20,7 @@ export class LessonsListComponent implements Observer<Lesson[]>, OnInit {
     next(data: Lesson[]) {
         console.log('Lessons list component received data ..');
         this.lessons = data;
+      console.log(data);
     }
 
     error(err: any)  {
