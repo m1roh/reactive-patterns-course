@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {Course} from "../shared/model/course";
-import {Lesson} from "../shared/model/lesson";
-import {CoursesService} from "../services/courses.service";
+import {Course} from '../shared/model/course';
+import {Lesson} from '../shared/model/lesson';
+import {CoursesService} from '../services/courses.service';
 import {Observable} from 'rxjs';
 
 @Component({
@@ -24,16 +24,6 @@ export class HomeComponent implements OnInit {
 
         this.latestLessons$ = this.coursesService.findLatestLessons();
 
-
-
     }
 
 }
-
-
-
-
-
-
-
-

@@ -8,14 +8,15 @@ import { EventBusExperimentsComponent } from './event-bus-experiments/event-bus-
 import { LessonsListComponent } from './lessons-list/lessons-list.component';
 import { LessonsCounterComponent } from './lessons-counter/lessons-counter.component';
 import { HomeComponent } from './home/home.component';
-import {firebaseConfig} from "../environments/firebase.config";
+import {firebaseConfig} from '../environments/firebase.config';
 import {AngularFireModule} from 'angularfire2';
 import {RouterModule} from '@angular/router';
-import {routerConfig} from "./router.config";
+import {routerConfig} from './router.config';
 import { CourseDetailComponent } from './course-detail/course-detail.component';
-import {CoursesService} from "./services/courses.service";
-import {AngularFireDatabaseModule} from "angularfire2/database";
-import {AngularFireAuthModule} from "angularfire2/auth";
+import {CoursesService} from './services/courses.service';
+import {AngularFireDatabaseModule} from 'angularfire2/database';
+import {AngularFireAuthModule} from 'angularfire2/auth';
+import {CoursesListComponent} from './courses-list/courses-list.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {AngularFireAuthModule} from "angularfire2/auth";
     LessonsListComponent,
     LessonsCounterComponent,
     HomeComponent,
-    CourseDetailComponent
+    CourseDetailComponent,
+    CoursesListComponent
   ],
   imports: [
     BrowserModule,
@@ -42,9 +44,3 @@ import {AngularFireAuthModule} from "angularfire2/auth";
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-
-
-
-
-
-
