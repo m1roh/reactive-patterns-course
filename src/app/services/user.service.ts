@@ -1,10 +1,9 @@
 import {Injectable} from '@angular/core';
 import {User} from "../shared/model/user";
 import {Observable, BehaviorSubject} from "rxjs";
-import {Http, Headers} from "@angular/http";
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
-
-export const UNKNOWN_USER : User = {
+export const UNKNOWN_USER: User = {
     firstName: 'Unknown'
 };
 
@@ -16,18 +15,18 @@ export class UserService {
 
     user$: Observable<User> = this.subject.asObservable();
 
-    constructor(private http:Http) {
+    constructor(private http: HttpClient) {
 
 
     }
 
-    login(email:string, password:string): Observable<User> {
+    login(email: string, password: string): Observable<User> {
 
-        const headers = new Headers();
+        const headers = new HttpHeaders();
         headers.append('Content-Type', 'application/json');
 
-        return this.http.post('/api/login', {email,password}, {headers})
-            .map(res => res.json())
+        return this.http.post('/api/login', {email, password}, {headers})
+            .map(res => res as User)
             .do(user => console.log(user))
             .do(user => this.subject.next(user))
             .publishLast().refCount();
