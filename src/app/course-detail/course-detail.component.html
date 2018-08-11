@@ -1,7 +1,11 @@
 
 <div class="screen-container">
 
+  <button class="button button-primary" style="margin-bottom: 15px"
+          (click)="loginAsM1roh()">Login as M1roh</button>
+
+    <course-detail-header [course]="course$ | async" [lessons]="lessons$ | async"></course-detail-header>
+
     <lessons-list [lessons]="lessons$ | async"></lessons-list>
 
 </div>
-
