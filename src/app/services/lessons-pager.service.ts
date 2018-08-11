@@ -25,6 +25,7 @@ export class LessonsPagerService {
   }
 
   previous() {
+
     if (this.currentPageNumber - 1 >= 1) {
       this.currentPageNumber -= 1;
       this.loadPage(this.currentPageNumber);
@@ -35,7 +36,6 @@ export class LessonsPagerService {
     this.currentPageNumber += 1;
     this.loadPage(this.currentPageNumber);
   }
-
 
   loadPage(pageNumber: number) {
     const params = new HttpParams()
@@ -50,5 +50,4 @@ export class LessonsPagerService {
         lessons => this.subject.next(lessons)
       );
   }
-
 }

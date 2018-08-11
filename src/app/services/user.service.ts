@@ -3,7 +3,6 @@ import { User } from '../shared/model/user';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-
 export const UNKNOWN_USER: User = {
     firstName: 'Unknown'
 };
@@ -17,9 +16,7 @@ export class UserService {
     user$: Observable<User> = this.subject.asObservable();
 
   constructor(private http: HttpClient) {
-
-
-    }
+  }
 
   login(email: string, password: string): Observable<User> {
 
@@ -33,6 +30,4 @@ export class UserService {
             .publishLast().refCount();
 
     }
-
-
 }

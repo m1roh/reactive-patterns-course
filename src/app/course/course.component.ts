@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { Lesson } from '../shared/model/lesson';
 import { CoursesHttpService } from '../services/courses-http.service';
 import { Course } from '../shared/model/course';
-import { LessonsPagerService } from '../services/lessons-pager.service';
+import { LessonsPagerService } from '../services/lessons-pager.service';w
 
 @Component({
   selector: 'course',

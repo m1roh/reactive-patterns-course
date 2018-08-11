@@ -29,7 +29,6 @@ import { SafeUrlPipe } from './shared/pipes/safe-url.pipe';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -68,9 +67,3 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 })
 export class AppModule {
 }
-
-
-
-
-
-
