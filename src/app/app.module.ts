@@ -21,8 +21,14 @@ import {NewsletterService} from "./services/newsletter.service";
 import {TopMenuComponent} from './top-menu/top-menu.component';
 import {LoginComponent} from './login/login.component';
 import {UserService} from "./services/user.service";
+import {AllLessonsComponent} from './all-lessons/all-lessons.component';
+import {CourseComponent} from './course/course.component';
+import {LessonDetailComponent} from './lesson-detail/lesson-detail.component';
+import {CoursesHttpService} from "./services/courses-http.service";
+import {SafeUrlPipe} from "./shared/pipes/safe-url.pipe";
 import {AngularFireDatabaseModule} from "angularfire2/database";
 import {AngularFireAuthModule} from "angularfire2/auth";
+
 
 @NgModule({
     declarations: [
@@ -37,7 +43,11 @@ import {AngularFireAuthModule} from "angularfire2/auth";
         CourseDetailHeaderComponent,
         NewsletterComponent,
         TopMenuComponent,
-        LoginComponent
+        LoginComponent,
+        AllLessonsComponent,
+        CourseComponent,
+        LessonDetailComponent,
+        SafeUrlPipe
     ],
     imports: [
         BrowserModule,
@@ -51,7 +61,8 @@ import {AngularFireAuthModule} from "angularfire2/auth";
     providers: [
         CoursesService,
         NewsletterService,
-        UserService
+        UserService,
+        CoursesHttpService
     ],
     bootstrap: [AppComponent]
 })

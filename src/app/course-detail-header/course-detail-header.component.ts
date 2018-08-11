@@ -16,4 +16,6 @@ export class CourseDetailHeaderComponent {
 
     @Input()
     lessons: Lesson[];
+
+
 }
