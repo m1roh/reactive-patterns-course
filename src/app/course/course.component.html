@@ -4,8 +4,8 @@
     <h2>{{ (course$ | async)?.description }}</h2>
 
     <div class="lessons-nav">
-        <button (click)="previousLessonsPage()">Previous</button>
-        <button (click)="nextLessonsPage()">Next</button>
+        <button class="button button-primary" (click)="previousLessonsPage()">Previous</button>
+        <button class="button button-primary" (click)="nextLessonsPage()">Next</button>
     </div>
 
     <lessons-list [lessons]="lessons$ | async"></lessons-list>
