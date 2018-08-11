@@ -1,4 +1,5 @@
-import {dbData} from './db-data';
+import { dbData } from './db-data';
+
 import * as _ from 'lodash';
 
 

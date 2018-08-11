@@ -1,9 +1,9 @@
-import {Component, OnInit, Input, OnDestroy} from '@angular/core';
-import {Observable} from 'rxjs';
-import {Lesson} from '../shared/model/lesson';
-import {CoursesHttpService} from '../services/courses-http.service';
-import {Course} from '../shared/model/course';
-import {LessonsPagerService} from '../services/lessons-pager.service';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Lesson } from '../shared/model/lesson';
+import { CoursesHttpService } from '../services/courses-http.service';
+import { Course } from '../shared/model/course';
+import { LessonsPagerService } from '../services/lessons-pager.service';w
 
 @Component({
   selector: 'course',
@@ -18,6 +18,7 @@ export class CourseComponent implements OnInit, OnDestroy {
 
   course$: Observable<Course>;
   lessons$: Observable<Lesson[]>;
+  detail$: Observable<Lesson>;
 
   constructor(private coursesService: CoursesHttpService,
               private lessonsPager: LessonsPagerService) {
@@ -31,25 +32,24 @@ export class CourseComponent implements OnInit, OnDestroy {
     this.lessonsPager.loadFirstPage(this.id);
   }
 
+  previousLessonsPage() {
+    this.lessonsPager.previous();
+  }
+
+  nextLessonsPage() {
+    this.lessonsPager.next();
+  }
+
+  selectDetail(lesson: Lesson) {
+    this.detail$ = this.coursesService.findLessonDetailById(lesson.url);
+  }
+
+  backToMaster() {
+    this.detail$ = undefined;
+  }
 
   ngOnDestroy() {
     console.log('destroying CourseComponent ...');
   }
 
-  nextLessonsPage() {
-    this.lessonsPager.nextPage();
-  }
-
-  previousLessonsPage() {
-    this.lessonsPager.previousPage();
-  }
-
 }
-
-
-
-
-
-
-
-

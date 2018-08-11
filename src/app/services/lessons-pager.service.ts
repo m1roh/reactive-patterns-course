@@ -1,42 +1,40 @@
 import { Injectable } from '@angular/core';
-import {BehaviorSubject, Observable} from 'rxjs';
-import {Lesson} from '../shared/model/lesson';
-import {HttpClient, HttpParams} from '@angular/common/http';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { Lesson } from '../shared/model/lesson';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class LessonsPagerService {
 
   private static readonly PAGE_SIZE = 2;
-
+  currentPageNumber = 1;
   private subject = new BehaviorSubject<Lesson[]>([]);
+  lessonsPage$: Observable<Lesson[]> = this.subject.asObservable();
   private courseId: number;
 
-  lessonsPage$: Observable<Lesson[]> = this.subject.asObservable();
 
-  currentPageNumber = 1;
+  constructor(private http: HttpClient) {
+    console.log('LessonsPagerService instance created ..');
+  }
 
-  constructor(private http: HttpClient) { }
 
   loadFirstPage(courseId: number) {
-
     this.courseId = courseId;
     this.currentPageNumber = 1;
     this.loadPage(this.currentPageNumber);
-
   }
 
-  nextPage() {
-    this.currentPageNumber += 1;
-    this.loadPage(this.currentPageNumber);
-  }
+  previous() {
 
-  previousPage() {
     if (this.currentPageNumber - 1 >= 1) {
       this.currentPageNumber -= 1;
       this.loadPage(this.currentPageNumber);
     }
+  }
+
+  next() {
+    this.currentPageNumber += 1;
+    this.loadPage(this.currentPageNumber);
   }
 
   loadPage(pageNumber: number) {
@@ -44,11 +42,10 @@ export class LessonsPagerService {
       .set('courseId', this.courseId.toString())
       .set('pageNumber', pageNumber.toString())
       .set('pageSize', LessonsPagerService.PAGE_SIZE.toString());
-
     this.http.get('/api/lessons', {
       params
     })
-      .map(res => res['payload'] as Lesson[])
+      .map(res => res['payload'])
       .subscribe(
         lessons => this.subject.next(lessons)
       );
