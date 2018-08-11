@@ -30,7 +30,6 @@ import {AngularFireDatabaseModule} from 'angularfire2/database';
 import {AngularFireAuthModule} from 'angularfire2/auth';
 import {LessonsPagerService} from './services/lessons-pager.service';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -69,9 +68,3 @@ import {LessonsPagerService} from './services/lessons-pager.service';
 })
 export class AppModule {
 }
-
-
-
-
-
-
