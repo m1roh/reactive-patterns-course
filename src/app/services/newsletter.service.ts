@@ -8,11 +8,10 @@ export class NewsletterService {
 
   constructor(private http: HttpClient) {
 
-    }
+  }
 
-    subscribeToNewsletter(email: string): Observable<any> {
-        return this.http.post('/api/newsletter', {email});
-    }
-
+  subscribeToNewsletter(email: string): Observable<any> {
+    return this.http.post('/api/newsletter', {email});
+  }
 
 }

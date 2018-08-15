@@ -18,36 +18,38 @@ export class LessonsPagerService {
   }
 
 
-  loadFirstPage(courseId: number) {
+  loadFirstPage(courseId: number): Observable<any> {
     this.courseId = courseId;
     this.currentPageNumber = 1;
-    this.loadPage(this.currentPageNumber);
+    return this.loadPage(this.currentPageNumber);
   }
 
-  previous() {
-
+  previous(): Observable<any> {
     if (this.currentPageNumber - 1 >= 1) {
       this.currentPageNumber -= 1;
-      this.loadPage(this.currentPageNumber);
     }
+    return this.loadPage(this.currentPageNumber);
   }
 
-  next() {
+  next(): Observable<any> {
     this.currentPageNumber += 1;
-    this.loadPage(this.currentPageNumber);
+    return this.loadPage(this.currentPageNumber);
   }
 
-  loadPage(pageNumber: number) {
+
+  loadPage(pageNumber: number): Observable<any> {
+
     const params = new HttpParams()
       .set('courseId', this.courseId.toString())
       .set('pageNumber', pageNumber.toString())
       .set('pageSize', LessonsPagerService.PAGE_SIZE.toString());
-    this.http.get('/api/lessons', {
+
+    return this.http.get('/api/lessons', {
       params
     })
       .map(res => res['payload'])
-      .subscribe(
-        lessons => this.subject.next(lessons)
-      );
+      .do(lessons => this.subject.next(lessons))
+      .publishLast().refCount();
   }
+
 }

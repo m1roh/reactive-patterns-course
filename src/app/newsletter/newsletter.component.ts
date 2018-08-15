@@ -1,7 +1,7 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {NewsletterService} from '../services/newsletter.service';
-import {UserService} from '../services/user.service';
-import {Observable} from 'rxjs';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { NewsletterService } from '../services/newsletter.service';
+import { UserService } from '../services/user.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'newsletter',
@@ -16,6 +16,7 @@ export class NewsletterComponent implements OnInit {
   constructor(
     private userService: UserService,
     private newsletterService: NewsletterService) {
+
   }
 
   ngOnInit() {
@@ -27,11 +28,9 @@ export class NewsletterComponent implements OnInit {
       .subscribe(
         () => {
           emailField.value = '';
-          alert('Subscription successful …')
+          alert('Subscription successful ...');
         },
-        (err) => {
-          console.error(err);
-        }
+        console.error
       );
   }
 

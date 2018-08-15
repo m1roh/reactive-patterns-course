@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { BrowserEventExperimentsComponent } from './browser-event-experiments/browser-event-experiments.component';
@@ -26,6 +26,11 @@ import { CourseComponent } from './course/course.component';
 import { LessonDetailComponent } from './lesson-detail/lesson-detail.component';
 import { CoursesHttpService } from './services/courses-http.service';
 import { SafeUrlPipe } from './shared/pipes/safe-url.pipe';
+import { MessagesComponent } from './messages/messages.component';
+import { MessagesService } from './services/messages.service';
+import { CreateLessonComponent } from './create-lesson/create-lesson.component';
+import { CourseDetailResolver } from './course-detail/course-detail.resolver';
+import { LoadingComponent } from './loading/loading.component';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
@@ -46,22 +51,29 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
     AllLessonsComponent,
     CourseComponent,
     LessonDetailComponent,
-    SafeUrlPipe
+    SafeUrlPipe,
+    MessagesComponent,
+    CreateLessonComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule,
     HttpClientModule,
+    FormsModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     RouterModule.forRoot(routerConfig),
+    ReactiveFormsModule,
+    SafeUrlPipe
   ],
   providers: [
     CoursesService,
     NewsletterService,
     UserService,
-    CoursesHttpService
+    CoursesHttpService,
+    MessagesService,
+    CourseDetailResolver
   ],
   bootstrap: [AppComponent]
 })
