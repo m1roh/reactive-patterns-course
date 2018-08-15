@@ -1,5 +1,3 @@
-
-
 export function newsletterRoute(req, res) {
 
     const payload = req.body;
