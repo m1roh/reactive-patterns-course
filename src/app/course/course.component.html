@@ -1,11 +1,10 @@
-
 <messages></messages>
 
 <div class="course-md">
 
     <h2>{{ (course$ | async)?.description }}</h2>
 
-    <div *ngIf=" detail$ | async as lessonDetail else masterTpl">
+  <div *ngIf=" detail$ | async as lessonDetail; else masterTpl">
 
         <button (click)="backToMaster()">Back</button>
 
@@ -29,4 +28,3 @@
 
 
 </div>
-

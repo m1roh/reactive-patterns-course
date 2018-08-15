@@ -1,22 +1,22 @@
-import {Injectable} from '@angular/core';
-import {Observable, BehaviorSubject} from "rxjs";
+import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable()
 export class MessagesService {
 
 
-    private errorsSubject = new BehaviorSubject<string[]>([]);
+  private errorsSubject = new BehaviorSubject<string[]>([]);
 
-    errors$: Observable<string[]> = this.errorsSubject.asObservable();
+  errors$: Observable<string[]> = this.errorsSubject.asObservable();
 
 
-    constructor() {
-        console.log('created MessagesService...');
-    }
+  constructor() {
+    console.log('created MessagesService...');
+  }
 
-    error(...errors:string[]) {
-        this.errorsSubject.next(errors);
-    }
+  error(...errors: string[]) {
+    this.errorsSubject.next(errors);
+  }
 
 
 }
