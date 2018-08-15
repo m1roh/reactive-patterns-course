@@ -70,10 +70,31 @@ export class CourseComponent implements OnInit, OnDestroy {
 
 }
 
+  ngOnInit() {
+    this.course$ = this.coursesService.findCourseById(this.id);
+    this.lessons$ = this.lessonsPager.lessonsPage$;
 
+    this.lessonsPager.loadFirstPage(this.id);
+  }
 
+  previousLessonsPage() {
+    this.lessonsPager.previous();
+  }
 
+  nextLessonsPage() {
+    this.lessonsPager.next();
+  }
 
+  selectDetail(lesson: Lesson) {
+    this.detail$ = this.coursesService.findLessonDetailById(lesson.url);
+  }
 
+  backToMaster() {
+    this.detail$ = undefined;
+  }
 
+  ngOnDestroy() {
+    console.log('destroying CourseComponent ...');
+  }
 
+}

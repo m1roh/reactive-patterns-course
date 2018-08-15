@@ -38,6 +38,7 @@ export class LessonsPagerService {
 
 
   loadPage(pageNumber: number): Observable<any> {
+
     const params = new HttpParams()
       .set('courseId', this.courseId.toString())
       .set('pageNumber', pageNumber.toString())
@@ -52,17 +53,3 @@ export class LessonsPagerService {
   }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-

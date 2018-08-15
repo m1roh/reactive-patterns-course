@@ -9,7 +9,7 @@ describe('LessonsPagerService', () => {
     });
   });
 
-  it('should ...', inject([LessonsPagerService], (service: LessonsPagerService) => {
+  it('should be created', inject([LessonsPagerService], (service: LessonsPagerService) => {
     expect(service).toBeTruthy();
   }));
 });

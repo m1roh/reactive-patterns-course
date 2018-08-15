@@ -34,7 +34,6 @@ import { LoadingComponent } from './loading/loading.component';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -65,7 +64,8 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     RouterModule.forRoot(routerConfig),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SafeUrlPipe
   ],
   providers: [
     CoursesService,
@@ -79,9 +79,3 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 })
 export class AppModule {
 }
-
-
-
-
-
-
